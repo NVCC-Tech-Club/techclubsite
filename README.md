@@ -1,4 +1,5 @@
-# Plan 
+# Plan
+Note: Please make a pull request & do not merge into main without review
 ## 1. Using Streamlit
 - We will set up a basic file structure with a simple page setup to get things running
 - All files will be written in Python for simplicity
