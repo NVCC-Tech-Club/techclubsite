@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "techclubsite"
+version = "0.0.1"
+description = "NOVA's official tech club website"
+authors = ["christian-galvez <cvg237@email.vccs.edu>"]
+license = "Apache License 2.0"
+
+[tool.poetry.dependencies]
+python = "3.12"
+streamlit = "1.38.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
