@@ -1,5 +1,4 @@
 [server]
-address = "0.0.0.0"
 enableXsrfProtection = true
 
 [theme]
@@ -8,9 +7,3 @@ backgroundColor = "#E5E5E5"
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#333333"
 font = "sans serif"
-
-[logger]
-level = "info"
-
-[client]
-displayEnabled = true
