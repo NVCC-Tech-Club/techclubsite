@@ -1,9 +1,10 @@
 [server]
+address = "0.0.0.0"
 enableXsrfProtection = true
 
 [theme]
 primaryColor = "#F39C12"
-backgroundColor = "#F4F4F4"
+backgroundColor = "#E5E5E5"
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#333333"
 font = "sans serif"
