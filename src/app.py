@@ -19,11 +19,11 @@ class MultiApp:
         
     def run(self):
         st.sidebar.markdown("## Main Menu")
-        app = st.sidebar.selectbox(
-            "Select Page", self.apps
+        app = st.selectbox(
+            "Select Page",
+            ("Home Page", "Current Projects", "Achievements"),
         )
         st.sidebar.markdown("---")
-        app["function"]()
 
 app = MultiApp()
 
