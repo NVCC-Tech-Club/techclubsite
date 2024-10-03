@@ -1,8 +1,14 @@
 import streamlit as st
+import os
 from PIL import Image
 from pages import page1
 from pages import page2
 from pages import page3
+
+st.set_page_config(
+            page_title="NOVA Tech Club",
+            layout="wide"
+        )
 
 class MultiApp:
     def __init__(self):
@@ -12,13 +18,6 @@ class MultiApp:
         self.apps.append({title: title, "function": func})
         
     def run(self):
-        img = Image.open(r"img\techclub_logo.png")
-        st.set_page_config(
-            page_title="NOVA Tech Club",
-            page_icon=img,
-            layout="wide"
-        )
-        
         st.sidebar.markdown("## Main Menu")
         app = st.sidebar.selectbox(
             "Select Page", self.apps, format_func=lambda app: app["title"]
