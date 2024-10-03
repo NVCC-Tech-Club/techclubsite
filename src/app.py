@@ -20,7 +20,7 @@ class MultiApp:
     def run(self):
         st.sidebar.markdown("## Main Menu")
         app = st.sidebar.selectbox(
-            "Select Page", self.apps, format_func=lambda app: app["title"]
+            "Select Page", self.apps
         )
         st.sidebar.markdown("---")
         app["function"]()
