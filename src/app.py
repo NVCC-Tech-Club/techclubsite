@@ -12,7 +12,7 @@ class MultiApp:
         self.apps.append({title: title, "function": func})
         
     def run(self):
-        img = Image.open("img\techclub_logo.png")
+        img = Image.open(r"img\techclub_logo.png")
         st.set_page_config(
             page_title="NOVA Tech Club",
             page_icon=img,
