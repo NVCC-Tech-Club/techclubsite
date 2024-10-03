@@ -1,30 +1,33 @@
 import streamlit as st
+from PIL import Image
+from pages import page1
+from pages import page2
+from pages import page3
 
-st.set_page_config(
-        page_title="Main Menu",
-)
+class MultiApp:
+    def __init__(self):
+        self.apps = []
+        
+    def add_app(self, title, func):
+        self.apps.append({title: title, "function": func})
+        
+    def run(self):
+        img = Image.open("img\techclub_logo.png")
+        st.set_page_config(
+            page_title="NOVA Tech Club",
+            page_icon=img,
+            layout="wide"
+        )
+        
+        st.sidebar.markdown("## Main Menu")
+        app = st.sidebar.selectbox(
+            "Select Page", self.apps, format_func=lambda app: app["title"]
+        )
+        st.sidebar.markdown("---")
+        app["function"]()
 
-st.title("Multipage Streamlit website")
-st.write("Welcome to Tech Club's official website!")
+app = MultiApp()
 
-# Sidebar for navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Select a page:", ["Home", "Officers", "Roadmap"])
-
-if page == "Home":
-    st.title("Welcome to My App")
-    st.write("This is the home page.")
-elif page == "Officers":
-    st.title("Current officers")
-    # Add data analysis content here
-elif page == "Roadmap":
-    st.title("Our roadmap for 2024-25")
-    # Add visualizations here
-    
-user_input = st.text_input("Enter something:")
-st.write(f"You entered: {user_input}")
-
-uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
-if uploaded_file:
-    data = pd.read_csv(uploaded_file)
-    st.write(data)
+app.add_app("Home Page", page1)
+app.add_app("Current Projects", page2)
+app.add_app("Achievements", page3)
