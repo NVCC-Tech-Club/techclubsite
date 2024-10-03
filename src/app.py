@@ -31,3 +31,5 @@ app = MultiApp()
 app.add_app("Home Page", page1)
 app.add_app("Current Projects", page2)
 app.add_app("Achievements", page3)
+
+app.run()
