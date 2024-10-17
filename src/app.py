@@ -1,34 +1,36 @@
 import streamlit as st
-import os
-from PIL import Image
-from pages import page1
-from pages import page2
-from pages import page3
 
-st.set_page_config(
-            page_title="NOVA Tech Club",
-            layout="wide"
-        )
+# Importing the page modules
+from pages import *
 
-class MultiApp:
-    def __init__(self):
-        self.apps = []
-        
-    def add_app(self, title, func):
-        self.apps.append({title: title, "function": func})
-        
-    def run(self):
-        st.sidebar.markdown("## Main Menu")
-        app = st.selectbox(
-            "Select Page",
-            ("Home Page", "Current Projects", "Achievements"),
-        )
-        st.sidebar.markdown("---")
+def main():
+    st.title("Welcome to the Club!")
 
-app = MultiApp()
+    # Search bar
+    search_term = st.text_input("Search for pages:", "")
+    
+    # Navigation links
+    st.header("Main Pages")
+    pages = {
+        "Event Calendar": pages.event_calendar.app,
+        "Project Showcase": pages.project_showcase.app,
+        "Member Directory": pages.member_directory.app,
+        "Coding Challenges": pages.coding_challenges.app,
+        "Resources Section": pages.resources.app,
+        "Discussion Forum/Chat": pages.forum.app,
+        "Club Blog": pages.club_blog.app,
+        "Live Code Demos": pages.live_demos.app,
+        "Club Voting": pages.club_voting.app,
+        "Leaderboard": pages.leaderboard.app
+    }
+    
+    # Filter pages based on search term
+    filtered_pages = {k: v for k, v in pages.items() if search_term.lower() in k.lower()}
 
-app.add_app("Home Page", page1)
-app.add_app("Current Projects", page2)
-app.add_app("Achievements", page3)
+    # Display navigation links
+    for page_name, page_function in filtered_pages.items():
+        if st.button(page_name):
+            page_function()
 
-app.run()
+if __name__ == "__main__":
+    main()
