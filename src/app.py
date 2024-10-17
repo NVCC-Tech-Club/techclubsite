@@ -41,7 +41,7 @@ def display_page(page_key):
         st.write("Select a page.")
 
 def main():
-    st.image("img/techclub_logo.png", width=200)
+    st.image("img\techclub_logo.png", width=200)
     st.title("Welcome to the Club! 🎉")
 
     # Check session state for page selection
