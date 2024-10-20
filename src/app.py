@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- CUSTOM CONFIG ---
-st.set_page_config(page_title="Tech Home", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="NOVA Tech Club", layout="wide")
 
 # Hide streamlit
 hide_st_style = """
