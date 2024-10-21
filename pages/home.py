@@ -1,8 +1,9 @@
 import streamlit as st
+from forms.contact import contact_form
 
 @st.dialog("Contact Us")
 def show_contact_form():
-    st.text_input("Name")
+    contact_form()
 
 # --- MAIN HUB ---
 col1, col2 = st.columns(2, gap="small", vertical_alignment="center")
