@@ -90,5 +90,9 @@ pg = st.navigation(
     }
 )
 
+# --- SHARED ON ALL PAGES ---
+st.logo("img/techclub_logo.png")
+st.sidebar.text("Made with 💗 by NVCC students")
+
 # --- RUN NAVIGATION ---
 pg.run()
