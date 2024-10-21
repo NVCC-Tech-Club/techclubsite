@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-WEBHOOK_URL = "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZjMDYzNzA0M2Q1MjZmNTUzNTUxMzIi_pc"
+WEBHOOK_URL = st.secrets["WEBHOOK_URL"]
 
 def contact_form():
     with st.form("contact_form"):
