@@ -8,7 +8,7 @@ def show_contact_form():
 # --- MAIN HUB ---
 col1, col2 = st.columns(2, gap="small", vertical_alignment="center")
 with col1:
-    st.image("./img/club_people.jpg", width=650)
+    st.image("./img/club_people.jpg", width=450)
 with col2:
     st.title("NOVA Tech Club", anchor=False)
     st.write(
