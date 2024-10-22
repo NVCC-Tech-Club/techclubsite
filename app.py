@@ -13,11 +13,19 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # --- PAGE SETUP ---
+
+
+
 home = st.Page(
     page="pages/home.py",
     title="Home",
     icon="🏠",
     default=True,
+)
+LogIn = st.Page(
+    page="logSign.py",
+    title="LogIn",
+    icon="🏠"
 )
 
 club_blog = st.Page(
@@ -84,9 +92,11 @@ resources = st.Page(
 pg = st.navigation(
     {
         "Home": [home],
+        "Login": [LogIn],
         "Info": [club_blog, event_calendar, forum, resources],
         "Members": [club_voting, leaderboard, member_directory],
         "Projects": [coding_challenges, live_demos, project_showcase],
+        
     }
 )
 
