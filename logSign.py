@@ -4,7 +4,7 @@ from firebase_setup import auth_client, db  # Import Firebase and Firestore setu
 from authentication import sign_up, sign_in, send_password_reset_email, logout, is_admin  # Auth functions
 from profiles import profile_page # Profile page functions
 from admin import admin_page  # Admin page function
-from pages import blog, event_calendar
+from pages import club_blog, event_calendar
 
 
 st.title('NVCC Tech Club Authentication')
