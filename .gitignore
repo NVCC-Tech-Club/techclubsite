@@ -1,0 +1,3 @@
+config.py
+service-account-file.json
+.streamlit/secrets.toml
