@@ -90,9 +90,9 @@ resources = st.Page(
 
 # --- NAVIGATION SETUP ---
 pg = st.navigation(
-    {   
-        "Login": [LogIn],
+    {   "Login": [LogIn],
         "Home": [home],
+        
         "Info": [club_blog, event_calendar, forum, resources],
         "Members": [club_voting, leaderboard, member_directory],
         "Projects": [coding_challenges, live_demos, project_showcase],

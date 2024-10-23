@@ -1,98 +1,240 @@
 import streamlit as st
-import plotly.graph_objects as go
-import pandas as pd
-from datetime import datetime
 
-# Sample event data with date and time
-events = {
-    'DateTime': ['2024-10-30 10:00', '2024-11-05 14:00', '2024-11-15 18:30', '2024-12-01 09:00'],
-    'Event': ['Zoom', 'Python - Workshop', 'Guest Lecture', 'Project Deadline'],
-    'Type': ['Competition', 'Learning', 'Lecture', 'Deadline'],
-    'Link': ['https://example.com/hackathon', 
-             'https://example.com/workshop', 
-             'https://example.com/guest-lecture', 
-             'https://example.com/project-deadline']
+from streamlit_calendar import calendar
+
+
+
+mode = "daygrid"
+
+
+events = [
+    {
+        "title": "Event 1",
+        "color": "#FF6C6C",
+        "start": "2023-07-03",
+        "end": "2023-07-05",
+        "resourceId": "a",
+    },
+    {
+        "title": "Event 2",
+        "color": "#FFBD45",
+        "start": "2023-07-01",
+        "end": "2023-07-10",
+        "resourceId": "b",
+    },
+    {
+        "title": "Event 3",
+        "color": "#FF4B4B",
+        "start": "2023-07-20",
+        "end": "2023-07-20",
+        "resourceId": "c",
+    },
+    {
+        "title": "Event 4",
+        "color": "#FF6C6C",
+        "start": "2023-07-23",
+        "end": "2023-07-25",
+        "resourceId": "d",
+    },
+    {
+        "title": "Event 5",
+        "color": "#FFBD45",
+        "start": "2023-07-29",
+        "end": "2023-07-30",
+        "resourceId": "e",
+    },
+    {
+        "title": "Event 6",
+        "color": "#FF4B4B",
+        "start": "2023-07-28",
+        "end": "2023-07-20",
+        "resourceId": "f",
+    },
+    {
+        "title": "Event 7",
+        "color": "#FF4B4B",
+        "start": "2023-07-01T08:30:00",
+        "end": "2023-07-01T10:30:00",
+        "resourceId": "a",
+    },
+    {
+        "title": "Event 8",
+        "color": "#3D9DF3",
+        "start": "2023-07-01T07:30:00",
+        "end": "2023-07-01T10:30:00",
+        "resourceId": "b",
+    },
+    {
+        "title": "Event 9",
+        "color": "#3DD56D",
+        "start": "2023-07-02T10:40:00",
+        "end": "2023-07-02T12:30:00",
+        "resourceId": "c",
+    },
+    {
+        "title": "Event 10",
+        "color": "#FF4B4B",
+        "start": "2023-07-15T08:30:00",
+        "end": "2023-07-15T10:30:00",
+        "resourceId": "d",
+    },
+    {
+        "title": "Event 11",
+        "color": "#3DD56D",
+        "start": "2023-07-15T07:30:00",
+        "end": "2023-07-15T10:30:00",
+        "resourceId": "e",
+    },
+    {
+        "title": "Event 12",
+        "color": "#3D9DF3",
+        "start": "2023-07-21T10:40:00",
+        "end": "2023-07-21T12:30:00",
+        "resourceId": "f",
+    },
+    {
+        "title": "Event 13",
+        "color": "#FF4B4B",
+        "start": "2023-07-17T08:30:00",
+        "end": "2023-07-17T10:30:00",
+        "resourceId": "a",
+    },
+    {
+        "title": "Event 14",
+        "color": "#3D9DF3",
+        "start": "2023-07-17T09:30:00",
+        "end": "2023-07-17T11:30:00",
+        "resourceId": "b",
+    },
+    {
+        "title": "Event 15",
+        "color": "#3DD56D",
+        "start": "2023-07-17T10:30:00",
+        "end": "2023-07-17T12:30:00",
+        "resourceId": "c",
+    },
+    {
+        "title": "Event 16",
+        "color": "#FF6C6C",
+        "start": "2023-07-17T13:30:00",
+        "end": "2023-07-17T14:30:00",
+        "resourceId": "d",
+    },
+    {
+        "title": "Event 17",
+        "color": "#FFBD45",
+        "start": "2023-07-17T15:30:00",
+        "end": "2023-07-17T16:30:00",
+        "resourceId": "e",
+    },
+]
+calendar_resources = [
+    {"id": "a", "building": "Building A", "title": "Room A"},
+    {"id": "b", "building": "Building A", "title": "Room B"},
+    {"id": "c", "building": "Building B", "title": "Room C"},
+    {"id": "d", "building": "Building B", "title": "Room D"},
+    {"id": "e", "building": "Building C", "title": "Room E"},
+    {"id": "f", "building": "Building C", "title": "Room F"},
+]
+
+calendar_options = {
+    "editable": "true",
+    "navLinks": "true",
+    "resources": calendar_resources,
+    "selectable": "true",
 }
 
-# Create a DataFrame and convert DateTime column to datetime
-df = pd.DataFrame(events)
-df['DateTime'] = pd.to_datetime(df['DateTime'], format='%Y-%m-%d %H:%M')
+if "resource" in mode:
+    if mode == "resource-daygrid":
+        calendar_options = {
+            **calendar_options,
+            "initialDate": "2023-07-01",
+            "initialView": "resourceDayGridDay",
+            "resourceGroupField": "building",
+        }
+    elif mode == "resource-timeline":
+        calendar_options = {
+            **calendar_options,
+            "headerToolbar": {
+                "left": "today prev,next",
+                "center": "title",
+                "right": "resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth",
+            },
+            "initialDate": "2023-07-01",
+            "initialView": "resourceTimelineDay",
+            "resourceGroupField": "building",
+        }
+    elif mode == "resource-timegrid":
+        calendar_options = {
+            **calendar_options,
+            "initialDate": "2023-07-01",
+            "initialView": "resourceTimeGridDay",
+            "resourceGroupField": "building",
+        }
+else:
+    if mode == "daygrid":
+        calendar_options = {
+            **calendar_options,
+            "headerToolbar": {
+                "left": "today prev,next",
+                "center": "title",
+                "right": "dayGridDay,dayGridWeek,dayGridMonth",
+            },
+            "initialDate": "2023-07-01",
+            "initialView": "dayGridMonth",
+        }
+    elif mode == "timegrid":
+        calendar_options = {
+            **calendar_options,
+            "initialView": "timeGridWeek",
+        }
+    elif mode == "timeline":
+        calendar_options = {
+            **calendar_options,
+            "headerToolbar": {
+                "left": "today prev,next",
+                "center": "title",
+                "right": "timelineDay,timelineWeek,timelineMonth",
+            },
+            "initialDate": "2023-07-01",
+            "initialView": "timelineMonth",
+        }
+    elif mode == "list":
+        calendar_options = {
+            **calendar_options,
+            "initialDate": "2023-07-01",
+            "initialView": "listMonth",
+        }
+    elif mode == "multimonth":
+        calendar_options = {
+            **calendar_options,
+            "initialView": "multiMonthYear",
+        }
 
-# Get the current date
-current_date = datetime.now()
-
-# Define event colors
-event_colors = {
-    'Competition': '#FF6347',   # Tomato Red
-    'Learning': '#1E90FF',      # Dodger Blue
-    'Lecture': '#32CD32',       # Lime Green
-    'Deadline': '#FFA500'       # Orange
-}
-
-# Initialize Plotly figure
-fig = go.Figure()
-
-# Add a trace for each event type, color-coded with enhanced marker size and shapes
-for i, row in df.iterrows():
-    fig.add_trace(go.Scatter(
-        x=[row['DateTime']],
-        y=[row['DateTime'].hour],  # Set y-axis to the hour of the event
-        mode='markers+text',
-        marker=dict(color=event_colors[row['Type']], size=14, symbol="circle"),
-        text=row['Event'],
-        textposition="top center",
-        name=row['Event'],
-        hovertext=f"{row['Event']}<br>{row['DateTime'].strftime('%Y-%m-%d %H:%M')}<br><a href='{row['Link']}'>More Info</a>",
-        hoverinfo="text",
-        opacity=0.8  # Slight transparency for aesthetics
-    ))
-
-# Update layout to set x-axis and y-axis labels and apply aesthetic improvements
-fig.update_layout(
-    title=dict(
-        text="Event Calendar",
-        font=dict(size=28, color="#2F4F4F", family="Arial"),  # Custom font and color
-        x=0.5,  # Center align the title
-    ),
-    xaxis_title="Date & Time",
-    yaxis_title="Hour",
-    xaxis=dict(
-        range=[current_date, df['DateTime'].max()],
-        tickformat="%Y-%m-%d %H:%M",
-        showgrid=False,  # Hide grid lines
-        zeroline=False,  # Hide zero line
-    ),
-    yaxis=dict(
-        tickvals=list(range(0, 24)),  # Hourly ticks (0-23)
-        ticktext=[f"{hour}:00" for hour in range(24)],  # Hour labels (0:00 to 23:00)
-        title=None,
-        showgrid=True,  # Show grid for better visual guidance
-        zeroline=False  # Hide zero line
-    ),
-    height=500,
-    hovermode='closest',
-    
-    # Customize background with rgba colors for soft transparency effects
-    plot_bgcolor="rgba(255, 255, 255, 0)",  # Transparent plot background
-    paper_bgcolor="rgba(230, 245, 255, 0.85)",  # Light blue background with some transparency
-    font=dict(family="Arial", color="#2F4F4F"),  # Text font and color
-    margin=dict(l=30, r=30, t=80, b=30),  # Adjust margins for cleaner layout
+state = calendar(
+    events=st.session_state.get("events", events),
+    options=calendar_options,
+    custom_css="""
+    .fc-event-past {
+        opacity: 0.8;
+    }
+    .fc-event-time {
+        font-style: italic;
+    }
+    .fc-event-title {
+        font-weight: 700;
+    }
+    .fc-toolbar-title {
+        font-size: 2rem;
+    }
+    """,
+    key=mode,
 )
 
-# Display the interactive plot in Streamlit
-st.markdown("""
-    <style>
-    .plotly-graph-div {
-        border-radius: 15px;  /* Set border radius */
-        overflow: hidden;      /* Ensure corners are rounded */
-        border: 2px solid #A9C8E3;  /* Optional: Add border color */
-    }
-    </style>
-""", unsafe_allow_html=True)
+if state.get("eventsSet") is not None:
+    st.session_state["events"] = state["eventsSet"]
 
-st.plotly_chart(fig)
+st.write(state)
 
-# Function to make events clickable (separate clickable links)
-st.write("### Click the links for more event details:")
-for i in range(len(df)):
-    st.markdown(f"[{df.iloc[i]['Event']}]({df.iloc[i]['Link']})")
+st.markdown("## API reference")
+st.help(calendar)
