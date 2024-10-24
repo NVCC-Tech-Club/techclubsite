@@ -1,5 +1,6 @@
 import streamlit as st
 
+from firebase_setup import get_events_from_firebase
 from streamlit_calendar import calendar
 
 
@@ -128,6 +129,7 @@ events = [
         "resourceId": "e",
     },
 ]
+# events = get_events_from_firebase()
 calendar_resources = [
     {"id": "a", "building": "Building A", "title": "Room A"},
     {"id": "b", "building": "Building A", "title": "Room B"},
