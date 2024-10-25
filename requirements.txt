@@ -1,2 +1,27 @@
 streamlit==1.38.0
 requests==2.32.3
+firebase-admin  
+
+
+{
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "react-calendar": "latest",
+    "@fullcalendar/react": "latest",
+    "@fullcalendar/core": "latest",
+    "@fullcalendar/daygrid": "latest",
+    "@fullcalendar/interaction": "latest",
+    "@fullcalendar/list": "latest",
+    "@fullcalendar/multimonth": "latest",
+    "@fullcalendar/resource": "latest",
+    "@fullcalendar/timegrid": "latest",
+    "@fullcalendar/adaptive": "latest",
+    "@fullcalendar/timeline": "latest",
+    "@fullcalendar/rrule": "latest",
+    "rrule": "latest"
+  }
+}
