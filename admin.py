@@ -1,5 +1,3 @@
-# admin.py
-
 import streamlit as st
 from firebase_admin import firestore
 
@@ -16,5 +14,3 @@ def admin_page(db):
 
     # Add your admin functionalities here
     st.write("Here you can manage users, view reports, etc.")
-
-

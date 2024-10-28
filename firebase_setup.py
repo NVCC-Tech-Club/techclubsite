@@ -42,3 +42,17 @@ def get_events_from_firebase():
     except Exception as e:
         print(f"An error occurred: {e}")
     return events
+
+from config import config  # Import your Firebase config
+
+# Firebase Setup
+if not firebase_admin._apps:
+    cred = credentials.Certificate('service-account-file.json')
+    firebase_admin.initialize_app(cred)
+
+# Pyrebase Setup
+firebase = pyrebase.initialize_app(config)
+auth_client = firebase.auth()
+
+# Firestore Setup
+db = firestore.client()
