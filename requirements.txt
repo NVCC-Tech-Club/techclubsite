@@ -1,5 +1,5 @@
 streamlit==1.38.0
 requests==2.32.3
-firebase-admin==6.6.0  
+firebase==4.0.1
 react==4.3.0
 streamlit-calendar==1.2.1
