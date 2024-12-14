@@ -1,0 +1,8 @@
+config.py
+service-account-file.json
+.streamlit/secrets.toml
+streamlit_calendar/__pycache__
+pages/__pycache__
+__pycache__
+.streamlit/secrets.toml
+streamlit_calendar/frontend/node_modules/
