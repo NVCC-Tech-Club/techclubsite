@@ -13,13 +13,6 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # --- PAGE SETUP ---
-
-
-LogIn = st.Page(
-    page="logSign.py",
-    title="Log In or Sign Up",
-    icon="🏠"
-)
 home = st.Page(
     page="pages/home.py",
     title="Home",
